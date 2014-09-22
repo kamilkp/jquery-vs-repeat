@@ -9,6 +9,39 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>jQuery-vs-repeat</title>
+      <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+      <script type="text/javascript" src="javascripts/jquery-vs-repeat.min.js"></script>
+      <script type="text/javascript">
+          $(document).ready(function(){
+            $.getJSON('data/data.json').success(function(data){
+              $('#container').vsRepeat({
+                data: data,
+                offsetBefore: 50,
+                offsetAfter: 50,
+                excess: 0,
+                sizeProperty: 'size',
+                onRender: function(element, index, startIndex, endIndex){
+                  if((index + startIndex) % 2)
+                    element.css('background', 'hsl(0, 0%, 80%)');
+                }
+              });
+            });
+          });
+      </script>
+      <style type="text/css">
+        #container{
+          width: 500px;
+          height: 400px;
+          overflow: auto;
+          border: 1px solid;
+        }
+        .item{
+          width: 100%;
+        }
+        /*.item:nth-child(2n){
+          background: hsl(0, 0%, 80%);
+        }*/
+      </style>
   </head>
 
   <body>
@@ -35,6 +68,24 @@
 <a name="jquery-vs-repeat-v001" class="anchor" href="#jquery-vs-repeat-v001"><span class="octicon octicon-link"></span></a>jquery-vs-repeat v0.0.1</h1>
 
 <p>Virtual Scroll plugin for jQuery</p>
+
+<h3>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>EXAMPLE:
+<small style="display: block; color: green; font-size: 0.7em">Make sure to check out the DOM via developer tools!</small>
+</h3>
+
+  <div id="container">
+    <div class="item">
+      <div>
+        #text#
+      </div>
+      <div>
+        <small>
+          #description#
+        </small>
+      </div>
+    </div>
+  </div>
 
 <h3>
 <a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>DESCRIPTION:</h3>
