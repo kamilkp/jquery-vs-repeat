@@ -1,6 +1,6 @@
 {
   "name": "jquery-vs-repeat",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Virtual Scroll plugin for jQuery",
   "homepage": "http://kamilkp.github.io/jquery-vs-repeat",
   "main": "src/jquery-vs-repeat.js",
