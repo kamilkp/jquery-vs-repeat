@@ -1,4 +1,4 @@
-jquery-vs-repeat v0.0.1
+jquery-vs-repeat v0.0.1 [![Bower version](https://badge.fury.io/bo/jquery-vs-repeat.svg)](http://badge.fury.io/bo/jquery-vs-repeat)
 =================
 
 Virtual Scroll plugin for jQuery
