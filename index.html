@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="jQuery-vs-repeat : Virtual Scroll plugin for jQuery">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>jQuery-vs-repeat</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kamilkp/jquery-vs-repeat">View on GitHub</a>
+
+          <h1 id="project_title">jQuery-vs-repeat</h1>
+          <h2 id="project_tagline">Virtual Scroll plugin for jQuery</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kamilkp/jquery-vs-repeat/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kamilkp/jquery-vs-repeat/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="jquery-vs-repeat-v001" class="anchor" href="#jquery-vs-repeat-v001"><span class="octicon octicon-link"></span></a>jquery-vs-repeat v0.0.1</h1>
+
+<p>Virtual Scroll plugin for jQuery</p>
+
+<h3>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>DESCRIPTION:</h3>
+
+<p><code>vsRepeat</code> stands for <strong>Virtual Scroll Repeat</strong>. It turns a standard scrollable container
+into a component, where the user thinks he has all the elements rendered and all he needs to do is scroll (without any kind of
+pagination - which most users loath) and at the same time the browser isn't overloaded by that many elements.
+The plugin renders only so many elements that can fit into current container's <code>clientHeight</code>/<code>clientWidth</code>.</p>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>USAGE:</h3>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            #text#
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;small&gt;</span>
+                #description#
+            <span class="nt">&lt;/small&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="s2">"item 1"</span><span class="p">,</span> <span class="s2">"description"</span><span class="o">:</span> <span class="s2">"description 1"</span><span class="p">,</span> <span class="s2">"size"</span><span class="o">:</span> <span class="s2">"35"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="s2">"item 2"</span><span class="p">,</span> <span class="s2">"description"</span><span class="o">:</span> <span class="s2">"description 2"</span><span class="p">,</span> <span class="s2">"size"</span><span class="o">:</span> <span class="s2">"40"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="s2">"item 3"</span><span class="p">,</span> <span class="s2">"description"</span><span class="o">:</span> <span class="s2">"description 3"</span><span class="p">,</span> <span class="s2">"size"</span><span class="o">:</span> <span class="s2">"50"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="s2">"item 4"</span><span class="p">,</span> <span class="s2">"description"</span><span class="o">:</span> <span class="s2">"description 4"</span><span class="p">,</span> <span class="s2">"size"</span><span class="o">:</span> <span class="s2">"35"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="s2">"item 5"</span><span class="p">,</span> <span class="s2">"description"</span><span class="o">:</span> <span class="s2">"description 5"</span><span class="p">,</span> <span class="s2">"size"</span><span class="o">:</span> <span class="s2">"40"</span><span class="p">}</span>
+<span class="p">];</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#container'</span><span class="p">).</span><span class="nx">vsRepeat</span><span class="p">({</span>
+    <span class="nx">data</span>         <span class="o">:</span> <span class="nx">data</span><span class="p">,</span>        <span class="c1">// required</span>
+    <span class="nx">offsetBefore</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>          <span class="c1">// optional</span>
+    <span class="nx">offsetAfter</span>  <span class="o">:</span> <span class="mi">50</span><span class="p">,</span>          <span class="c1">// optional</span>
+    <span class="nx">excess</span>       <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>           <span class="c1">// optional</span>
+    <span class="nx">sizeProperty</span> <span class="o">:</span> <span class="s1">'size'</span><span class="p">,</span>      <span class="c1">// optional</span>
+    <span class="nx">direction</span>    <span class="o">:</span> <span class="s1">'horizontal'</span><span class="p">,</span><span class="c1">// optional (default: vertical)</span>
+    <span class="nx">onRender</span>     <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">startIndex</span><span class="p">,</span> <span class="nx">endIndex</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">((</span><span class="nx">index</span> <span class="o">+</span> <span class="nx">startIndex</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="nx">element</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'gray'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>The <code>sizeProperty</code> is optional along with the actual <code>size</code> property in <code>data</code> array. If provided the plugin assumes, that's the element height/width. If not all items are assumed to have the same height/width.</p>
+
+<p>The 'onRender' function is also optional. If provided the plugin will call it for each element when it gets rendered into the DOM with the following arguments:</p>
+
+<ul>
+<li>
+<code>element</code> - the jQuery object of that element,</li>
+<li>
+<code>index</code> - the index of the element in the current subset of the array</li>
+<li>
+<code>startIndex</code> - the index of the first rendered item</li>
+<li>
+<code>endIndex</code> - the index of the first item that is NOT rendered</li>
+</ul><p>NOTE: the actual index of the element in the original data array is <code>startIndex + index</code>.</p>
+
+<p>IMPORTANT: if you are using <a href="https://angularjs.org">AngularJS</a> in your project please use my <a href="https://github.com/kamilkp/angular-vs-repeat">angular-vs-repeat</a> library.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">jQuery-vs-repeat maintained by <a href="https://github.com/kamilkp">kamilkp</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
